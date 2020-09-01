@@ -1,0 +1,22 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Dec 23 13:06:02 ART 2019
+http\://10.10.10.90/nexus/content/groups/public/.lastUpdated=1528373922139
+http\://10.10.10.90/nexus/content/groups/public/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1577117162700
+https\://code.lds.org/nexus/content/groups/main-repo/.lastUpdated=1577117161646
+http\://repositorio-maven-ar.everis.int/content/repositories/releases/.lastUpdated=1452026782622
+https\://repo.maven.apache.org/maven2/.error=
+http\://repositorio-maven-ar.everis.int/content/repositories/releases/.error=
+https\://code.lds.org/nexus/content/groups/main-repo/.error=
+http\://10.10.10.90/nexus/content/repositories/releases/.lastUpdated=1528373922085
+http\://repositorio-maven-ar.everis.int/content/groups/public/.error=
+http\://repositorio-maven-ar.everis.int/content/groups/ext_local/.error=
+http\://repositorio-maven-ar.everis.int/content/groups/public/.lastUpdated=1452026792343
+file\://C\:\\Users\\ebaldizzoni\\test-workspace\\performance\\api-tarjetas-performance-test/repo/.lastUpdated=1577117161718
+http\://10.10.10.90/nexus/content/repositories/central/.error=
+http\://intranet.ituzaingo.dns/nexus/repository/maven-public/.error=
+http\://10.10.10.90/nexus/content/repositories/central/.lastUpdated=1528373922120
+http\://intranet.ituzaingo.dns/nexus/repository/maven-public/.lastUpdated=1545225439717
+file\://C\:\\Users\\ebaldizzoni\\test-workspace\\performance\\api-tarjetas-performance-test/repo/.error=
+http\://10.10.10.90/nexus/content/repositories/releases/.error=
+http\://repositorio-maven-ar.everis.int/content/groups/ext_local/.lastUpdated=1452026782747

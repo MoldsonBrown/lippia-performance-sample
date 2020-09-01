@@ -1,0 +1,18 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Dec 30 13:56:49 ART 2019
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1577119304270
+http\://10.10.10.90/nexus/content/repositories/central/.lastUpdated=1527599296153
+http\://intranet.ituzaingo.dns/nexus/repository/maven-public/.error=
+http\://10.10.10.90/nexus/content/repositories/releases/.error=
+http\://10.10.30.15\:8081/nexus/content/groups/public/.lastUpdated=1577724327549
+http\://repositorio-maven-ar.everis.int/content/repositories/releases/.lastUpdated=1437146899219
+http\://10.10.10.90/nexus/content/repositories/releases/.lastUpdated=1527599296136
+http\://intranet.ituzaingo.dns/nexus/repository/maven-public/.lastUpdated=1541678754669
+http\://10.10.10.90/nexus/content/repositories/central/.error=
+http\://repositorio-maven-ar.everis.int/content/groups/ext_local/.lastUpdated=1437146899406
+https\://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-central/.error=
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.oracle\:ojdbc6\:pom\:11.2.0.3 from/to central (https\://repo.maven.apache.org/maven2)\: connect timed out
+https\://code.lds.org/nexus/content/groups/main-repo/.lastUpdated=1574766227661
+https\://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-central/.lastUpdated=1577725009918
+http\://repositorio-maven-ar.everis.int/content/repositories/releases/.error=
+http\://10.10.10.90/nexus/content/groups/public/.lastUpdated=1527599296203

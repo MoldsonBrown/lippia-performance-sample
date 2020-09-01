@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+        <groupId>io.lippia</groupId>
+        <artifactId>root</artifactId>
+        <version>3.2.1.1</version>
+	</parent>
+
+	<groupId>com.Crowdar</groupId>
+	<artifactId>lippia-performance-example-project</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>performance-automation</name>
+	<packaging>jar</packaging>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<crowd.project.name>Performance Sample Project</crowd.project.name>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<crowdar.cucumber.filter>@Example --tags @1ps</crowdar.cucumber.filter>
+		<crowdar.cucumber.option>src/test/resources/features --glue com/crowdar/configuration --glue com/crowdar/performance/steps --tags ${crowdar.cucumber.filter} --tags 'not @Ignore' --plugin pretty</crowdar.cucumber.option>
+	</properties>
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<performance.runner>testng.xml</performance.runner>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+					
+						<groupId>com.lazerycode.jmeter</groupId>
+						<artifactId>jmeter-maven-plugin</artifactId>
+						<version>2.8.6</version>
+						<executions>
+							<!-- Run JMeter tests -->
+							<execution>
+								<id>jmeter-tests</id>
+								<goals>
+									<goal>jmeter</goal>
+								</goals>
+							</execution>
+							<!-- Fail build on errors in test -->
+							<execution>
+								<id>jmeter-check-results</id>
+								<goals>
+									<goal>results</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<jmeterExtensions>
+								<artifact>plugins:influxdbwriter:1.2</artifact>
+								<artifact>plugins:postgresql:42.2</artifact>		
+							</jmeterExtensions>
+							<propertiesJMeter>
+								<!-- Necesario para las que salgan las columnas adicionales en los 
+									resultados -->
+								<sample_variables>isValid,accountId,errorMessages</sample_variables>
+								<!-- Cambia el timestamp a una fecha -->
+								<jmeter.save.saveservice.timestamp_format>dd/MM/yyyy'T'HH:mm:ssZ</jmeter.save.saveservice.timestamp_format>
+								<server.rmi.ssl.disable>true</server.rmi.ssl.disable>
+							</propertiesJMeter>
+							<testFilesExcluded>
+								<!-- Excluyo el get token de la prueba pero necesito copiarlo -->
+							</testFilesExcluded>
+							<overrideRootLogLevel>debug</overrideRootLogLevel>
+							<scanResultsForFailedRequests>true</scanResultsForFailedRequests>
+							<ignoreResultFailures>false</ignoreResultFailures>
+							<resultsFileFormat>csv</resultsFileFormat>
+							<generateReports>true</generateReports>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>remote</id>
+			<properties>
+				<performance.runner>testng.xml</performance.runner>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.lazerycode.jmeter</groupId>
+						<artifactId>jmeter-maven-plugin</artifactId>
+						<version>2.8.6</version>
+						<executions>
+							<!-- Run JMeter tests -->
+							<execution>
+								<id>jmeter-tests</id>
+								<goals>
+									<goal>jmeter</goal>
+								</goals>
+							</execution>
+							<!-- Fail build on errors in test -->
+							<execution>
+								<id>jmeter-check-results</id>
+								<goals>
+									<goal>results</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+                          <jmeterExtensions>
+								<artifact>plugins:influxdbwriter:1.2</artifact>
+								<artifact>plugins:postgresql:42.2</artifact>		
+							</jmeterExtensions>
+							<remoteConfig>
+								<startServersBeforeTests>true</startServersBeforeTests>
+								<serverList>${remoteHosts}</serverList>
+								<stopServersAfterTests>false</stopServersAfterTests>
+							</remoteConfig>
+							<propertiesJMeter>
+								<!-- Necesario para las que salgan las columnas adicionales en los 
+									resultados -->
+								<sample_variables>isValid,accountId,errorMessages</sample_variables>
+								<!-- Cambia el timestamp a una fecha -->
+                                <generateReports>true</generateReports>
+								<jmeter.save.saveservice.timestamp_format>yyyyMMdd'T'HH:mm:ssZ</jmeter.save.saveservice.timestamp_format>
+							</propertiesJMeter>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
+	<dependencies>
+		<dependency>
+	        <groupId>io.lippia</groupId>
+	        <artifactId>core</artifactId>
+	        <version>3.2.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>0.17.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.w3c</groupId>
+			<artifactId>dom</artifactId>
+			<version>2.3.0-jaxb-1.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>7.2.1.jre8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>42.2.14</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<filters>
+			<filter>src/main/resources/cucumber.properties</filter>
+		</filters>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${performance.runner}</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>localRepo</id>
+			<name>local-repository</name>
+			<url>file://${project.basedir}/repo</url>
+		</repository>
+		<repository>
+			<id>crowdarRepo</id>
+			<name>crowdar-repository</name>
+			<url>https://nexus-v3-repositories.automation.crowdaronline.com/repository/maven-public/</url>
+		</repository>
+	</repositories>
+</project>
