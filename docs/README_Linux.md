@@ -9,13 +9,12 @@
 - [Download] and unzip the source repository for this guide, or clone it using Git:
     ``` $ git clone https://bitbucket.org/crowdarautomation/lippia-performance-sample-project.git ```
 - Go to root directory  
-    ``` $ cd lippia-web-sample-project ```
+    ``` $ cd lippia-performance-sample-project ```
 ## Strategies to run
 ***
-- [Local](#localHeadless) (running tests building project with docker-compose from command line)
 - [Stack](#remote) (running docker-compose)  
 
-#### Local strategy
+#### Stack strategy
 ##### Executing tests in you local machine from command line
 - From terminal  execute  
 `$ sudo docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from lippia`    

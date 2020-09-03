@@ -106,6 +106,6 @@ This project use json to manage request data like url parameters, body data, hea
 # Getting started
     
 - If you are Linux user 
-    [`Getting started - Linux User`](https://bitbucket.org/crowdarautomation/lippia-api-example-project/src/master/docs/README_Linux.md)
+    [`Getting started - Linux User`](https://bitbucket.org/crowdarautomation/lippia-performance-example-project/src/master/docs/README_Linux.md)
 - If you are Windws user
-    [`Getting started - Windows User`](https://bitbucket.org/crowdarautomation/lippia-api-example-project/src/master/docs/README_Windows.md)
+    [`Getting started - Windows User`](https://bitbucket.org/crowdarautomation/lippia-performance-example-project/src/master/docs/README_Windows.md)
